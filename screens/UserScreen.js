@@ -1,60 +1,52 @@
 import React, { Component, useContext } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import QRCode from "react-native-qrcode-svg";
-import { Header } from "react-native-elements";
-import UserContext from "../contexts/dataContext";
-
-export const QR = () => {
-  const user = useContext(UserContext);
+import { View, Text } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Avatar, Accessory, Icon } from "react-native-elements";
+// import UserContext from "../customHook/useDataUser";
+import useDataUser from "../customHook/useDataUser";
+function UserScreen() {
+  const { user } = useDataUser();
   return (
-    <View>
-      <Header
-        style={{ height: 200 }}
-        statusBarProps={{
-          barStyle: "light-content",
-          backgroundColor: "#2c6fb2",
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Avatar
+        size="xlarge"
+        rounded
+        icon={{ name: "user", type: "font-awesome" }}
+        source={{
+          uri: user.avatar,
         }}
-        containerStyle={{
-          backgroundColor: "#2c6fb2",
-        }}
-        centerComponent={
-          <Text
-            style={{
-              fontSize: 25,
-              color: "#FFF",
-              fontFamily: "Roboto",
-              fontWeight: "bold",
-            }}
-          >
-            Thông tin cá nhân
-          </Text>
-        }
-      />
-      
-      <View style={styles.container}>
-        <QRCode size={350} value={toString(user.userId)} />
-        <Text  style={{fontWeight:'bold', fontSize:17, fontFamily:'Roboto', marginTop:8 }}>{user.name}</Text>
-        <Text  style={{fontWeight:'bold', fontSize:17, fontFamily:'Roboto' }}>{user.clientname}</Text>
-      </View>
+        containerStyle={{ elevation: 1 }}
+      >
+        <Accessory
+          size="30"
+          style={{ height: 50, width: 50, borderRadius: 50 }}
+        />
+      </Avatar>
     </View>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical:30,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 8,
-    backgroundColor: "#FFF",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 4,
-    marginBottom: 16,
-  },
-});
+const Stack = createStackNavigator();
+
+function UserStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={UserScreen}
+        options={{
+          headerTitle: "Thông tin tài khoản",
+          headerStyle: { backgroundColor: "#2c6fb2" },
+          headerTitleStyle: {
+            color: "#FFF",
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: 24,
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+export default UserStack;
