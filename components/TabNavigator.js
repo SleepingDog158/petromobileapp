@@ -30,7 +30,7 @@ export default function TabNavigator() {
               size = focused ? 35 : 30;
             } else if (route.name === "QR") {
               iconName = "qrcode";
-              size = 35;
+              size = 42;
             } else if (route.name === "Bản đồ") {
               iconName = focused ? "map-marked" : "map-marked-alt";
               size = focused ? 35 : 30;
@@ -43,7 +43,7 @@ export default function TabNavigator() {
             }
 
             return (
-              <View style={route.name === "QR" && styles.QRIcon}>
+              <View style={route.name === "QR" && [styles.QRIcon, focused && styles.QRIconFocused]}>
                 <FontAwesome5 name={iconName} size={size} color={color} />
               </View>
             );
@@ -78,5 +78,10 @@ const styles = StyleSheet.create({
     borderRadius: 36,
     justifyContent: "center",
     alignItems: "center",
+    borderWidth: 4,
+    borderColor: "gray"
   },
+  QRIconFocused:{
+    borderColor: "#2c6fb2"
+  }
 });

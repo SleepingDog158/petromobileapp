@@ -11,6 +11,8 @@ const initUser = {
   plate: "15B1-97165",
   creditLimit: 100000000,
   creditRemain: 90000000,
+  
+  
 };
 
 export default function () {

@@ -2,7 +2,6 @@ import React, { Component, useContext } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { createStackNavigator } from "@react-navigation/stack";
-import UserContext from "../customHook/useDataUser";
 import useDataUser from "../customHook/useDataUser";
 const Stack = createStackNavigator();
 
