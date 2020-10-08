@@ -4,7 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { HomeStack } from "../screens/HomeScreen";
-import { QR, QRStack } from "../screens/QR";
+import { QRStack } from "../screens/QR";
+import { BillStack } from "../screens/Bills";
 
 import UserStack from "../screens/UserScreen";
 const Tab = createBottomTabNavigator();
@@ -27,19 +28,19 @@ export default function TabNavigator() {
 
             if (route.name === "Trang chủ") {
               iconName = "home";
-              size = focused ? 35 : 30;
+              size = focused ? 40 : 30;
             } else if (route.name === "QR") {
               iconName = "qrcode";
-              size = 42;
+              size = focused ? 45 : 38;
             } else if (route.name === "Bản đồ") {
               iconName = focused ? "map-marked" : "map-marked-alt";
-              size = focused ? 35 : 30;
+              size = focused ? 40 : 30;
             } else if (route.name === "Giao dịch") {
               iconName = focused ? "receipt" : "receipt";
-              size = focused ? 35 : 30;
+              size = focused ? 40 : 30;
             } else if (route.name === "Tài khoản") {
               iconName = focused ? "user-alt" : "user";
-              size = focused ? 35 : 30;
+              size = focused ? 40 : 30;
             }
 
             return (
@@ -52,15 +53,19 @@ export default function TabNavigator() {
         tabBarOptions={{
           style: {
             height: 60,
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            backgroundColor: "#2c6fb2"
+          
           },
-          activeTintColor: "#2c6fb2",
-          inactiveTintColor: "gray",
+          activeTintColor: "white",
+          inactiveTintColor: "white",
         }}
       >
         <Tab.Screen name="Trang chủ" component={HomeStack} />
         <Tab.Screen name="Bản đồ" component={MapScreen} />
         <Tab.Screen name="QR" component={QRStack} />
-        <Tab.Screen name="Giao dịch" component={QRStack} />
+        <Tab.Screen name="Giao dịch" component={BillStack} />
         <Tab.Screen name="Tài khoản" component={UserStack} />
       </Tab.Navigator>
     </NavigationContainer>
@@ -72,16 +77,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: -30,
     elevation: 6,
-    backgroundColor: "white",
+    backgroundColor: "#2c6fb2",
     width: 72,
     height: 72,
     borderRadius: 36,
     justifyContent: "center",
     alignItems: "center",
-    borderWidth: 4,
-    borderColor: "gray"
+    borderWidth: 2,
+    borderColor: "white"
   },
   QRIconFocused:{
-    borderColor: "#2c6fb2"
+    borderColor: 'white'
   }
 });

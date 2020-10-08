@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 function QRScreen() {
   const { user } = useDataUser();
   return (
-    <View>
+    <View style={{flex:1, backgroundColor: "white"}}>
       <Text
         style={{
           marginVertical: 16,
@@ -28,7 +28,7 @@ function QRScreen() {
               fontWeight: "bold",
               fontSize: 17,
               fontFamily: "Roboto",
-              marginTop: 8,
+              marginTop: 16,
             }}
           >
             {user.name}

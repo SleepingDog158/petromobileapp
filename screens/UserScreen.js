@@ -1,5 +1,5 @@
 import React, { Component, useContext } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Avatar, Accessory, Button, Input } from "react-native-elements";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -8,13 +8,13 @@ import useDataUser from "../customHook/useDataUser";
 function UserScreen({ navigation }) {
   const { user } = useDataUser();
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ flex: 1 }}>
         <View
-          style={{ flexDirection: "row", alignItems: "center", margin: 40 }}
+          style={{ alignItems: "center", marginHorizontal: 25, marginBottom: 15, marginTop: 20 }}
         >
           <Avatar
-            size={110}
+            size={90}
             rounded
             icon={{ name: "user", type: "font-awesome" }}
             source={{
@@ -28,14 +28,14 @@ function UserScreen({ navigation }) {
           >
             <Accessory
               size={20}
-              style={{ height: 35, width: 35, borderRadius: 50 }}
+              style={{ height: 30, width: 30, borderRadius: 50 }}
             />
           </Avatar>
           <View style={{ marginLeft: 8 }}>
             <Text style={{ fontSize: 24, fontWeight: "bold" }}>
               {user?.name}
             </Text>
-            <Text style={{ fontStyle: "italic", fontSize: 17, color: "gray" }}>
+            <Text style={{ fontStyle: "italic", fontSize: 17, color: "gray", alignSelf: "center" }}>
               {user?.code}
             </Text>
           </View>
@@ -47,7 +47,35 @@ function UserScreen({ navigation }) {
             borderBottomColor: "#D3D3D3",
             borderBottomWidth: 1,
             marginHorizontal: 24,
-            marginBottom: 20,
+            marginBottom: 10,
+          }}
+        >
+          <FontAwesome5 name="address-card" size={26} color="grey" />
+          <Text style={{ fontSize: 20, marginLeft: 16, marginBottom: 4 }}>
+            {user?.residentID}
+          </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            borderBottomColor: "#D3D3D3",
+            borderBottomWidth: 1,
+            marginHorizontal: 24,
+            marginBottom: 10,
+          }}
+        >
+          <FontAwesome5 name="home" size={26} color="grey" />
+          <Text style={{ fontSize: 20, marginLeft: 16, marginBottom: 4 }}>
+            {user?.address}
+          </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            borderBottomColor: "#D3D3D3",
+            borderBottomWidth: 1,
+            marginHorizontal: 24,
+            marginBottom: 10,
           }}
         >
           <FontAwesome5 name="building" size={26} color="grey" />
@@ -61,7 +89,7 @@ function UserScreen({ navigation }) {
             borderBottomColor: "#D3D3D3",
             borderBottomWidth: 1,
             marginHorizontal: 24,
-            marginBottom: 20,
+            marginBottom: 10,
           }}
         >
           <FontAwesome5 name="phone" size={26} color="grey" />
@@ -75,7 +103,7 @@ function UserScreen({ navigation }) {
             borderBottomColor: "#D3D3D3",
             borderBottomWidth: 1,
             marginHorizontal: 24,
-            marginBottom: 20,
+            marginBottom: 10,
           }}
         >
           <FontAwesome5 name="car" size={26} color="grey" />
@@ -89,7 +117,7 @@ function UserScreen({ navigation }) {
             borderBottomColor: "#D3D3D3",
             borderBottomWidth: 1,
             marginHorizontal: 24,
-            marginBottom: 20,
+            marginBottom: 10,
           }}
         >
           <FontAwesome5 name="file-contract" size={26} color="grey" />
@@ -97,51 +125,59 @@ function UserScreen({ navigation }) {
             {user?.contractCode}
           </Text>
         </View>
+        
         <Button
           title="Đổi mật khẩu"
           raised
-          containerStyle={{ marginHorizontal: 64 }}
+          type="outline"
+          containerStyle={{ marginHorizontal: 101 }}
           titleStyle={{ fontSize: 20 }}
-          buttonStyle={{ backgroundColor: "#2c6fb2" }}
+          buttonStyle={{ borderRadius:20, borderWidth: 2 }}
           onPress={() => navigation.navigate("PassChange")}
         />
         <Button
           title="Đăng xuất"
           raised
-          containerStyle={{ marginVertical: 16, marginHorizontal: 64 }}
+          containerStyle={{marginTop: 16, marginBottom:40, marginHorizontal: 100 }}
           titleStyle={{ fontSize: 20 }}
           color="danger"
-          buttonStyle={{ backgroundColor: "#dc3545" }}
+          buttonStyle={{ backgroundColor: "#dc3545", borderRadius: 20 }}
         />
+        
       </View>
     </View>
   );
 }
 
-function PassChange({navigation}) {
+function PassChange({ navigation }) {
   return (
+    <View style={{ flex:1, backgroundColor: "white"}}>
     <View style={{ margin: 32 }}>
       <Input
+        // secureTextEntry="true"
         label="Mật khẩu hiện tại"
         leftIcon={<FontAwesome5 name="lock" size={24} color="grey" />}
       />
       <Input
         label="Mật khẩu mới"
+        // secureTextEntry="true"
         leftIcon={<FontAwesome5 name="lock" size={24} color="grey" />}
       />
       <Input
+        // secureTextEntry="true"
         label="Nhập lại mật khẩu mới"
         leftIcon={<FontAwesome5 name="lock" size={24} color="grey" />}
       />
       <Button
-          title="Xác nhận"
-          raised
-          containerStyle={{ marginVertical: 16, marginHorizontal: 32 }}
-          titleStyle={{ fontSize: 20 }}
-          color="danger"
-          buttonStyle={{ backgroundColor: "#2c6fb2" }}
-          onPress={() => navigation.goBack()}
-        />
+        title="Xác nhận"
+        raised
+        containerStyle={{ marginVertical: 16, marginHorizontal: 32 }}
+        titleStyle={{ fontSize: 20 }}
+        color="danger"
+        buttonStyle={{ backgroundColor: "#2c6fb2" }}
+        onPress={() => navigation.goBack()}
+      />
+    </View>
     </View>
   );
 }

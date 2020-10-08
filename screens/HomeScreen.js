@@ -6,7 +6,11 @@ import Logo from "../assets/Logo.png";
 const Stack = createStackNavigator();
 
 function HomeScreen() {
-  return <Text>a</Text>;
+  return (
+    <View >
+      <Text>a</Text>
+    </View>
+  );
 }
 
 function LogoTitle() {
@@ -20,7 +24,7 @@ function LogoTitle() {
 }
 export const HomeStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
