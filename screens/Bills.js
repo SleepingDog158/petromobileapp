@@ -5,23 +5,30 @@ import useDataUser from "../customHook/useDataUser";
 import BillListItems from "../components/BillList";
 const Stack = createStackNavigator();
 
-function BillScreen({navigation}) {
-    const { bill } = useDataUser();
+function BillScreen({ navigation }) {
+  const { bill } = useDataUser();
   return (
-    <View style={{flex:1, backgroundColor: "white"}}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <FlatList
-      contentContainerStyle={{paddingBottom:40}}
+        contentContainerStyle={{ paddingBottom: 40 }}
         style={styles.container}
         data={bill}
         renderItem={({ item }) => (
           <BillListItems
             bill={item}
             onPress={() =>
-                navigation.navigate('BillDetail', {
-                    
-                  })
-              }
-            
+              navigation.navigate("BillDetail", {
+                id: item.id,
+                otherParams: {
+                  contractCode: item.contractCode,
+                  transactionDate: item.transactionDate,
+                  station: item.station,
+                  product: item.product,
+                  quantity: item.quantity,
+                  total: item.total,
+                },
+              })
+            }
           />
         )}
         keyExtractor={(item) => `${item.id}`}
@@ -30,14 +37,47 @@ function BillScreen({navigation}) {
   );
 }
 
-function BillDetail(){
-    return(
-        <Text>
-            a
+function BillDetail({ route, navigation }) {
+  const { id, otherParams } = route.params;
+  return (
+    <View style={{ flex: 1, backgroundColor: "white", paddingTop: 16 }}>
+      <View style={styles.content}>
+        <Text style={{ fontWeight: "bold", fontSize: 20 }}>Mã hóa đơn:</Text>
+        <Text style={{ fontSize: 20, textAlign: "right" }}>{id}</Text>
+      </View>
+      <View style={styles.content}>
+        <Text style={{ fontWeight: "bold", fontSize: 20 }}>Mã hợp đồng:</Text>
+        <Text style={{ fontSize: 20, textAlign: "right" }}>
+          {otherParams.contractCode}
         </Text>
-    )
+      </View>
+      <View style={styles.content}>
+        <Text style={{ fontWeight: "bold", fontSize: 20 }}>Cửa hàng:</Text>
+        <Text style={{ fontSize: 20, textAlign: "right" }}>
+          {otherParams.station}
+        </Text>
+      </View>
+      <View style={styles.content}>
+        <Text style={{ fontWeight: "bold", fontSize: 20 }}>Ngày giao dịch:</Text>
+        <Text style={{ fontSize: 20, textAlign: "right" }}>
+          {otherParams.transactionDate}
+        </Text>
+      </View>
+      <View style={styles.content}>
+      <Text style={{ fontWeight: "bold", fontSize: 20 }}>Số lượng:</Text>
+      <Text style={{ fontSize: 20, textAlign: "right" }}>
+          {otherParams.quantity}
+        </Text>
+      </View>
+      <View style={styles.content}>
+      <Text style={{ fontWeight: "bold", fontSize: 20 }}>Thành tiền:</Text>
+      <Text style={{ fontSize: 20, textAlign: "right" }}>
+          {otherParams.total}
+        </Text>
+      </View>
+    </View>
+  );
 }
-
 
 export const BillStack = () => {
   return (
@@ -68,6 +108,7 @@ export const BillStack = () => {
             fontWeight: "bold",
             fontSize: 24,
           },
+          headerRight: () => <View />,
         }}
       />
     </Stack.Navigator>
@@ -75,12 +116,17 @@ export const BillStack = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flexGrow:1,
-      paddingLeft: 8,
-      paddingRight: 8,
-      paddingTop: 10,
-      paddingBottom:20
-    },
-  });
-  
+  container: {
+    flexGrow: 1,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 10,
+    paddingBottom: 20,
+  },
+  content: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 8,
+    elevation: 8,
+  },
+});

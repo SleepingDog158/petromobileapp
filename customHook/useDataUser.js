@@ -21,7 +21,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -31,7 +31,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -41,7 +41,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -51,7 +51,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -61,7 +61,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -71,7 +71,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -81,7 +81,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -91,7 +91,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -101,7 +101,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
     {
@@ -111,7 +111,7 @@ const initUser = {
       station:"Xuân Thủy, Cầu Giấy, Hà Nội",
       status: "Accepted",
       product:"Xăng E5-RON 92",
-      quantity: "10 lit",
+      quantity: 10,
       total: "170000 VNĐ"
     },
   ]
