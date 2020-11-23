@@ -22,7 +22,7 @@ function QRScreen() {
 
       {user && (
         <View style={styles.container}>
-          <QRCode size={350} value={toString(user.userId)} />
+          <QRCode size={350} value={String(user.userId)} />
           <Text
             style={{
               fontWeight: "bold",

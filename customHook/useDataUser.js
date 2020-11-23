@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 
 const initUser = {
   avatar: "https://robohash.org/rerumetiure.bmp?size=50x50&set=set1",
-  userId: 1234567890,
-  name: "Trần Hải Dương",
-  code: 1234567,
+  userId: 11,
+  name: "Lê Văn D",
+  code: 'driver.11',
   phone: "0936149167",
   clientname: "Công ty A",
   contractCode: "2020Covid19I",
   residentID:"031123123123",
   address:"Dịch Vọng, Cầu Giấy, Hà Nội",
-  plate: "15B1-97165",
+  plate: "51G-780.59",
   creditLimit: 100000000,
-  creditRemain: 90000000,
+  creditRemain: 1000000,
   bill:[
     {
       id: 1,
